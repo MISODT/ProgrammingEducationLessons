@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Quiz</title>
+        <link rel="stylesheet" href="Style.css">
+    </head>
+
+    <body>
+        <form name="quiz" class="quiz" id="quiz" action="javascript:check();">
+            <div class="centerDiv">
+                <h1> Типы данных: </h1>
+                <h2> 1.Какой тип данных хранит значения: true, false? </h2>
+                <input name="vopros1" checked="checked" value="no" id="value1" type="radio"> string
+                <input name="vopros1" value="yes" id="value2" type="radio"> bool
+                <input name="vopros1" value="no" id="value3" type="radio"> int <br>
+            
+                <h2> 2.Какой тип данных хранит в себе набор символов Unicode? </h2>
+                <input name="vopros2" checked="checked" value="yes" id="value1" type="radio"> string
+                <input name="vopros2" value="no" id="value2" type="radio"> char
+                <input name="vopros2" value="no" id="value3" type="radio"> byte <br>
+                
+                <h1> Арифметические операции языка C#: </h1>
+                <h2> 1.Какая операция позволяет получить остаток от целочисленного деления? </h2>
+                <input name="vopros3" checked="checked" value="no" id="value1" type="radio"> --
+                <input name="vopros3" value="yes" id="value2" type="radio"> %
+                <input name="vopros3" value="no" id="value3" type="radio"> / <br>
+
+                <h2> 2.Какая операция позволяет увеличить значение переменной на 1? </h2>
+                <input name="vopros4" checked="checked" value="yes" id="value1" type="radio"> ++
+                <input name="vopros4" value="no" id="value2" type="radio"> --
+                <input name="vopros4" value="no" id="value3" type="radio"> / <br>
+                <br>
+                <input value="Проверить" type="submit" class="button">
+            </div>              
+                       
+        </form>
+                    
+        <script>
+            function check()
+            {
+                var yes=0;
+                var no=0;
+                var otvet="";
+                var choice;
+
+                for (var v=1; v<=4; v++)
+                {
+                    var q = document.forms['quiz'].elements['vopros'+v];
+
+                    for (var i=0; i<q.length; i++)
+                    {
+                        if (q[i].checked) {choice=q[i].value;}
+                    }
+
+                    if (choice=="yes") {yes++;}
+                    if (choice=="no") {no++;}
+                }
+
+                switch (true) 
+                {
+                    case (yes<2): otvet="оценка 3";break;
+                    case (yes==2): otvet="оценка 4";break;
+                    case (yes>2): otvet="оценка 5";break;
+                    default: otvet="очень плохо";break;
+                }
+
+                alert(otvet);
+            }
+        </script>
+    </body>
+</html>
